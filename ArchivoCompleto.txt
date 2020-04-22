@@ -1,0 +1,20 @@
+123 2019 120 Periodoncia 2 25 23 Blanqueamiento Dental
+892 2018 90 Ortodoncia 2 89 09 Ortodoncia Brackets
+298 2020 120 Cirugía 1 76 Protesis dental removible
+902 2017 50 Endodoncia 2 13 73 Extracción de muelas
+765 2019 180 Maxilofacial 3 45 85 42 Carillas bucales de porcelana
+394 2020 45 Endodoncia 2 34 82 Limpieza Bucal
+453 2018 70 Preventiva 3 31 08 37 Sellador  de fosetas y fisuras
+239 2020 240 Maxilofacial 3 32 76 54 Biopsia de tejido blando
+393 2016 120 Estética 3 73 90 39 Blanqueamiento en pieza desvitalizada
+349 2018 60 Operatoria 3 42 13 09 Amalgama retenida a pin
+792 2014 180 Periodoncia 4 09 73 76 54 Cirugía ósea por cuadrante
+628 2020 120 Prostodoncia 3 39 42 76 Diente inferior de resina para prótesis por unidad
+982 2018 45 Infantil 3 82 89 23 Profiláctico y aplicación de flúor
+392 2019 70 Coronas 2 42 13 Corona de acero con una radiografía
+292 2016 60 Estética 3 85 54 90 Carilla de resina directa
+542 2018 20 RX 2 45 90 Radiografía panorámica
+223 2012 30 Preventiva 3 13 32 54 Profilaxis en adulto
+981 2014 180 Maxilofacial 2 31 13 Lip bumper con dos bandas
+293 2015 80 Coronas 2 76 34 Provisional en acrílico
+382 2016 45 RX 3 73 25 45 Radiografía periapical
