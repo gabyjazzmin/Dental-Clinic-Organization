@@ -4,13 +4,19 @@
 using namespace std;
 
 class Tratamiento {
-public:
-    //constructor default
+public:    
     Tratamiento();
+    //constructor default
 
-    //constructor con parametros
 
-
+    void setcveTreatment(string cveTreatment);
+    void setnumTreatment(int numTreatment);
+    void settreatmentRoom(int treatmentRoom);
+    void sethour(Reloj hour);
+    string getcveTreatment();
+    int getnumTreatment();
+    int gettreatmentRoom();
+    Reloj gethour();
     //metodos de acceso set y get
 
 
@@ -19,14 +25,47 @@ public:
 
 
 private:
-    string cveFuncion;
-    int numTreatment;
-    int treatmentRoom;
-    Reloj hour;
+    string cve;
+    //Clave de tratamiento 
+    int numTreat
+    int room;
+    Reloj h;
 
 
 };
 
 Tratamiento :: Tratamiento() {
 
+}
+
+void Tratamiento :: setcveTreatment(string cveTreatment){
+      cve = cveTreatment;
+}
+
+void Tratamiento :: setnumTreatment(int numTreatment){
+  numTreat = numTreatment;
+}
+
+void Tratamiento :: settreatmentRoom(int treatmentRoom){
+  room = treatmentRoom;
+}
+
+void Tratamiento :: sethour(Reloj hour){
+  h = hour;
+}
+
+string Tratamiento :: getcveTreatment(){
+    return cve;
+}
+
+int Tratamiento :: getnumTreatment(){
+    return numTreat;
+}
+
+int Tratamiento :: gettreatmentRoom(){
+    return room;
+}
+
+Reloj Tratamiento :: gethour(){
+    return h;
 }
