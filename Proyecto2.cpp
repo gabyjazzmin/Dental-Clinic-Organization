@@ -3,6 +3,8 @@
 #include <string>
 #include <algorithm>
 #include "CitaDental.h"
+#include "Tratamiento.h"
+
 
 
 using namespace std;
@@ -10,7 +12,7 @@ using namespace std;
 int main() {
 //Areglos
 //----------------------------------------------
-//Arreglo de Tratamiento 
+
 
 //Arreglo y lectura de archivo con nombres de doctores
     Doctor arrDocList[20];
@@ -26,12 +28,7 @@ int main() {
         arrDocList[cont].setidDoctor(idDoctor);
         arrDocList[cont].setdoctorName(nameDoctor);
         cont++;
-    }
-    /*
-    for(int x=0; x<20; x++){
-      cout<<arrDocList[x].getdoctorName()<<"   "<<arrDocList[x].getidDoctor()<<endl;
-    }
-    */
+    } 
 
 //Arreglo y lectura de archivo completo
     CitaDental arrAllList[20];
@@ -65,8 +62,81 @@ int main() {
                      }
                   }
                     getline(archEntrada, treatment);
+                  arrAllList[archCount].settitle(treatment);
                     archCount++;
                  }
+//Arreglo de Tratamiento 
+Tratamiento arrAnswers[20];
+string cveTreat;
+int numCita, hour, min, room;
+char respuesta;
+bool check = false;
+bool check2 = true;
+int countTreatment=0;
+
+
+   cout << "Hola, a continuación te pediremos datos para los tratamientos. Los datos por orden son: " << endl;
+   cout << endl;
+
+   cout << "Clave del Tratamiento " << endl;
+   cout << "Cuarto de tratamiento" << endl;
+   cout << "Numero de Cita Dental " << endl;
+   cout << "Hora " << endl;
+   cout << "Minutos " << endl;
+   cout << " " << endl;
+
+              do{
+                
+              cout << " " << endl;
+                 
+              cin >> cveTreat >> room >> numCita;
+              do{
+                cin >> hour >> min;
+                if(((hour<0)||(hour>=24))||((min<0)||(min>=60))){
+                  cout<< "hora y/o minuto invalido"<<endl;
+                  cout << "Asegurate de poner correctamente la hora y minuto de nuevo " << endl;
+                }
+              } while(((hour<0)||(hour>=24))||((min<0)||(min>=60)));
+
+              Reloj relojito(hour, min);
+
+              arrAnswers[countTreatment].setcveTreatment(cveTreat);
+              arrAnswers[countTreatment].settreatmentRoom(room);
+         
+     
+      //Comparar si es igual al número de tratamiento
+    for (int i =0;  i<20; i++){
+      if(numCita == arrAllList[i].getnumTreatment()){
+        arrAnswers[countTreatment].setnumTreatment(numCita);
+        //cout << "El numero de citas si coincidio  " << endl; 
+        check = true;
+          } 
+    }
+    if(check){
+      cout << "El numero de citas si coincidio y la hora es correcta " << endl; 
+      check2=true;
+    }
+    else{
+      cout << " El número de citas es incorrecto, vuelve a meter todos los datos. " << endl;
+      check2= false;
+    }
+ 
+              arrAnswers[countTreatment].sethour(relojito);
+              
+              if(check2){
+                cout << " " << endl;
+                cout << "¿Deseas agregar una vez más datos del tratamiento? " << endl;
+                cout << " " << endl;
+
+              
+                 
+                 cout << "Teclea 1 para no agregar. En caso de que quieras agregar otro teclea cualquier tecla y escribe los datos indicados al incio" << endl;
+              cin >> respuesta;
+            countTreatment++;
+              }
+          }
+             
+             while((respuesta != '1') || (!check2) );
                  /*
                  for(int x=0; x<20; x++){
                    arrAllList[x].printData();
@@ -75,7 +145,7 @@ int main() {
                  */
   
     char cEntrada, cPregunta;
-    cout << "Teclea 1 para iniciar el programa" << endl;
+    cout << "Teclea 1 para mostrar el menú" << endl;
     cin >> cEntrada;
     cout << " " << endl;
     while(cEntrada == '1'){
@@ -125,40 +195,127 @@ cout << " " << endl;
     break;
 
     case 'c':
-    cout << "hey" << endl;
 
-     cout << " " << endl;
+ cout << "Muestra de todas las funciones disponibles " << endl;
+ cout << " " << endl;
+
+        for(int x=0; x<countTreatment; x++){
+          cout<<arrAnswers[x].getcveTreatment()<<" ";
+          for(int i=0; i<archCount; i++){
+            if(arrAnswers[x].getnumTreatment() == arrAllList[i].getnumTreatment()){
+              cout<<arrAllList[i].gettitle()<<" ";
+              break;
+            }
+          }
+              cout<<arrAnswers[x].gettreatmentRoom()<<" "; 
+              arrAnswers[x].gethour().muestra();
+              cout<<endl;
+        }
+         cout << " " << endl;
         cout << "Si deseas volver a repetir este proceso, teclea 1"<< endl;
         cin >> cEntrada;
         cout << " " << endl;
     break;
 
     case 'd' :
-    cout << "zup" << endl;
+
+    int h,m;
+  
+    cout << "Ingresa hora y minuto " << endl;
+    
+    do{
+    cin >> h >> m;
+      if(((hour<0)||(hour>=24))||((min<0)||(min>=60))){
+        cout << "Haz introducido una hora inexistente, vuelve a intentar." << endl;
+      }
+      }while(((hour<0)||(hour>=24))||((min<0)||(min>=60)));
+    
+    //Reloj relojitoCheca(h,m);
+    for (int x = 0; x<archCount; x++ ){
+        if((arrAnswers[x].gethour().getHora() == h) && (arrAnswers[x].gethour().getMin() == m) ){
+          for(int i=0; i<archCount; i++){
+            if(arrAnswers[x].getnumTreatment() == arrAllList[i].getnumTreatment()){
+             // arrAllList[i].printData();
+              cout<<arrAllList[i].gettitle()<<" ";
+              cout<<arrAnswers[x].gettreatmentRoom()<<endl;
+            }
+          }
+          
+
+        }
+    }
+    cout << " " << endl;
+        cout << "Si deseas volver a repetir este proceso, teclea 1"<< endl;
+        cin >> cEntrada;
+        cout << " " << endl;
+    break;
+
+      case 'e':{
+    string cveUser;
+    bool conf=false;
+    int index=-1;
+    cout << "Introduce la clave del tratamiento" << endl;
+    
+    while(!conf){
+      cin >>cveUser;
+      for(int x=0; x<archCount; x++){
+      if(arrAnswers[x].getcveTreatment()==cveUser){
+        index=x;
+        conf=true;
+      
+      if(!conf){
+        cout << "Introduce otra vez la clave ya que introdujiste una incorrecta " << endl; 
+      }
+      }
+     }
+    }
+    cout<<arrAnswers[index].gettreatmentRoom()<<" ";
+    for(int i=0; i<archCount; i++){
+            if(arrAnswers[index].getnumTreatment() == arrAllList[i].getnumTreatment()){
+              cout<<arrAllList[i].gettitle()<<" ";
+              arrAnswers[index].gethour().muestra();
+              cout<<" "<<arrAllList[i].gettimeOfTreatment()<<" "<<arrAllList[i].getspecialtyArea() << " "; 
+              arrAllList[i].showDoctorsList();
+              cout<<endl;
+              break;
+            }
+          }
     
     cout << " " << endl;
         cout << "Si deseas volver a repetir este proceso, teclea 1"<< endl;
         cin >> cEntrada;
         cout << " " << endl;
-    break;
+    break;}
 
-    case 'e':
-    cout << "yey" << endl;
+    case 'f':{
+    int idVerify;
+    int index=-1;
+    bool conf=false;
+    cout << "Teclea el id del doctor que buscas" << endl;
 
+  
+    while(!conf){
+      cin >>idVerify;
+      for(int x=0; x<cont; x++){
+      if(arrDocList[x].getidDoctor()==idVerify){
+        index=x;
+        conf=true;
+      }
+     }
+     if(!conf){
+        cout << "Introduce otra vez la clave ya que introdujiste una incorrecta " << endl; 
+      }
+    }
+    for(int x=0; x<archCount; x++){
+        if(arrAllList[x].checkDoctorsList(idVerify)){
+          cout<<arrAllList[x].gettitle()<<" "<<arrAllList[x].getyear()<<endl;
+        }
+    }
     cout << " " << endl;
         cout << "Si deseas volver a repetir este proceso, teclea 1"<< endl;
         cin >> cEntrada;
         cout << " " << endl;
-    break;
-
-    case 'f':
-    cout << "wuju" << endl;
-
-    cout << " " << endl;
-        cout << "Si deseas volver a repetir este proceso, teclea 1"<< endl;
-        cin >> cEntrada;
-        cout << " " << endl;
-    break;
+    break;}
 
     case 'g':
     cout << "Ha elegido terminar este proceso, cuidese y lavese los dientes" << endl;
@@ -175,7 +332,6 @@ cout << " " << endl;
 
     
   }
-
 
   return 0;
 }
