@@ -154,8 +154,8 @@ cout << "¡Hola! Bienvenido al menú del sistema de reservacion de este consulto
 cout << " " << endl;
 cout << " " << endl;
 cout << "[a] Consulta de todos los doctores con su id" << endl;
-cout << "[b] Consultas de todas la peliculas mostrando título, año, duración, género y lista de los nombres de los actores " << endl;
-cout << "[c] Consulta de todas las funciones disponibles, mostrando clave de la función, nombre de la pelicula, numero de la sala y hora en la que se presenta " << endl;
+cout << "[b] Consultas de todas los tratamientos mostrando título de tratamiento, año, duración, area de especialidad y lista de los nombres de los doctores" << endl;
+cout << "[c] Consulta de todas las citas disponibles, mostrando clave del tratamiento, nombre del tratamiento, numero de la sala de operación y hora en la que se realiza  " << endl;
 cout <<  "[d] Consulta de tratamientos por hora predeterminada " << endl;
 //Aqui mostramos el titulo de la pelicula y el numero de sala de todas los tratamientos que se presentan en esta hora que de el usuario
 cout << "[e] Consulta por clave de tratamiento " << endl;
