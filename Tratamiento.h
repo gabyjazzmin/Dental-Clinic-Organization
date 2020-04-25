@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Reloj.h"
 
-using namespace std;
+//using namespace std;
 
 class Tratamiento {
 public:    
@@ -21,15 +21,18 @@ public:
 
 
 
+
+    void muestra();
     //metodo muestra
 
 
 private:
     string cve;
     //Clave de tratamiento 
-    int numTreat
+    int numTreat;
     int room;
     Reloj h;
+   
 
 
 };
@@ -43,6 +46,8 @@ void Tratamiento :: setcveTreatment(string cveTreatment){
 }
 
 void Tratamiento :: setnumTreatment(int numTreatment){
+  //Se verifica que sea igual al número en el archivo
+
   numTreat = numTreatment;
 }
 
@@ -53,6 +58,7 @@ void Tratamiento :: settreatmentRoom(int treatmentRoom){
 void Tratamiento :: sethour(Reloj hour){
   h = hour;
 }
+
 
 string Tratamiento :: getcveTreatment(){
     return cve;
@@ -68,4 +74,9 @@ int Tratamiento :: gettreatmentRoom(){
 
 Reloj Tratamiento :: gethour(){
     return h;
+}
+
+
+void Tratamiento :: muestra(){
+  cout << cve << numTreat << room << h << endl;
 }
