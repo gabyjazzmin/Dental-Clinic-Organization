@@ -2,7 +2,8 @@
 #include <string.h>
 #include "Doctor.h"
 
-//Aqui se va a cargar el arreglo con la informaciÛn del archivo grande
+
+//Aqui se va a cargar el arreglo con la informaci√≥n del archivo grande
 
 class CitaDental {
 
@@ -10,8 +11,8 @@ public:
 
     CitaDental();
     //constructor default
-    CitaDental(int numTreatment, int yearReceived, int timeOfTreatment, string specialtyArea, int doctorsQuantity, int idDoctor, string theTitle);
-    //Constructor default
+//    CitaDental(int numTreatment, int yearReceived, int timeOfTreatment, string specialtyArea, int doctorsQuantity, int idDoctor, string theTitle);
+    //Constructor con parametros
 
     void setidDoctor(int id);
     void setnumTreatment(int nTreat);
@@ -20,6 +21,7 @@ public:
     void settimeOfTreatment(int timeOfTreat);
     void setspecialtyArea(string specialty);
     void setdoctorsQuantity(int docQ);
+    void setComparacionId(int idComp);
     //Doctors quantity solo puede recibir porque no es capaz de modificar la cantidad de actores directamente
 
     int getidDoctor();
@@ -28,21 +30,24 @@ public:
     int getyear();
     int gettimeOfTreatment();
     string getspecialtyArea();
+    int getdoctorsQuantity();
+    int getComparacionId();
 
     //metodos de acceso set y get
 
-
-    void setdoctorsList(Doctor);
-    //Este entero correpender· al subindice del arreglo de doctorsList que se quiere accesar
+    bool checkDoctorsList(int);
+    bool setdoctorsList(Doctor);
+    void showDoctorsList();
+    //Este entero correpender√° al subindice del arreglo de doctorsList que se quiere accesar
     //metodo para modificar lista de actores
 
 
-
-    //metodo muestra
     void printData();
+    //metodo muestra
+   
 private:
     Doctor doctorsList[10];
-    //Este es un arreglo de 10 elementos como m·ximo
+    //Este es un arreglo de 10 elementos como m√°ximo
     int doctorsQuantity;
     //Para almacenar la cantidad de doctores que hay
     int idDoctor;
@@ -51,6 +56,7 @@ private:
     int yearReceived;
     int timeOfTreatment;
     string specialtyArea;
+    int idCompared;
    
 
     int listIndex = 0;
@@ -59,12 +65,9 @@ private:
 };
 
 CitaDental::CitaDental() {
-    //falta poner valores default para los dem·s atributos.
+    //falta poner valores default para los dem√°s atributos.
 }
 
-CitaDental::CitaDental(int numTreatment, int yearReceived, int timeOfTreatment, string specialtyArea, int doctorsQuantity, int idDoctor, string theTitle) {
-
-}
 
 void CitaDental::setidDoctor(int id) {
     idDoctor = id;
@@ -94,9 +97,27 @@ void CitaDental::setdoctorsQuantity(int docQ) {
     doctorsQuantity = docQ;
 }
 
-void CitaDental::setdoctorsList(Doctor doc) {
-    doctorsList[listIndex] = doc;
-    listIndex++;
+bool CitaDental::checkDoctorsList(int id){
+    for(int x=0; x<listIndex; x++){
+    if(doctorsList[x].getidDoctor() == id){
+      return true;
+    }
+  }
+  return false;
+}
+
+bool CitaDental::setdoctorsList(Doctor doc) {
+
+    if(!checkDoctorsList(doc.getidDoctor()) && listIndex<9 ){
+      doctorsList[listIndex] = doc;
+      listIndex++;
+      return true;
+    }
+    return false;
+}
+
+void CitaDental :: setComparacionId(int idComp){
+  idCompared = idComp;
 }
 
 int CitaDental::getidDoctor() {
@@ -122,11 +143,18 @@ int CitaDental::gettimeOfTreatment() {
 string CitaDental::getspecialtyArea() {
     return specialtyArea;
 }
-
+int CitaDental :: getdoctorsQuantity(){
+  return doctorsQuantity;
+}
 void CitaDental::printData() {
-    cout << numTreatment << " - " << year << " - " << timeOfTreatment << " - " << specialtyArea << " - " << doctorsQuantity << " - ";
+    cout << numTreatment << " - " << yearReceived << " - " << timeOfTreatment << " - " << specialtyArea << " - " << doctorsQuantity << " - ";
     for (int x = 0; x < listIndex; x++) {
         cout << doctorsList[x].getidDoctor() << " - " << doctorsList[x].getdoctorName() << " - ";
     }
-    cout << title << endl;
+    cout << theTitle << endl;
 }
+ void CitaDental :: showDoctorsList(){
+   for(int i=0; i<listIndex; i++){
+     cout<<doctorsList[i].getdoctorName()<<" ";
+   }
+ }
