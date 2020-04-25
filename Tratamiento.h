@@ -78,5 +78,6 @@ Reloj Tratamiento :: gethour(){
 
 
 void Tratamiento :: muestra(){
-  cout << cve << numTreat << room << h << endl;
+  cout << cve << " " << numTreat << " " << room;
+
 }
