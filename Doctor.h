@@ -18,7 +18,7 @@ public:
     int getidDoctor();
     string getdoctorName();
     //metodos de acceso set y get
-
+    void muestra();
     //metodo muestra
 
 private:
@@ -39,20 +39,24 @@ Doctor::Doctor(int idDoctor, string doctorName) {
 //El atributo listaDoctores de la clase Cita Dental es un arreglo de 10 elementos
 
 //El atributo cantidadDoctores de la clase Cita Dental es para almacenar la cantidad de actores que hay en el arrego de listaDoctores
-void Doctor::setdoctorName(string name) {
-    doctorName = name;
+void Doctor :: setdoctorName(string name) {
+   doctorName = name;
 }
 
-void Doctor::setidDoctor(int id) {
+void Doctor :: setidDoctor(int id) {
     idDoctor = id;
 }
 
-string Doctor::getdoctorName() {
+string Doctor :: getdoctorName() {
 
     return doctorName;
 }
 
-int Doctor::getidDoctor() {
+int Doctor :: getidDoctor() {
 
-    return idDoctor;
+    return idDoctor; 
+}
+
+void Doctor :: muestra(){
+  cout << idDoctor << " - " << doctorName << endl;
 }
